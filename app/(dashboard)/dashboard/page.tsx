@@ -284,25 +284,27 @@ export default function DashboardPage() {
       <DashboardNavbar storeSlug={store?.slug} />
       <div className="container mx-auto p-4 md:p-8 space-y-8 max-w-6xl pb-28">
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-8 bg-[#091515]/60 backdrop-blur-2xl p-8 md:p-10 rounded-[2.5rem] border border-white/10 shadow-2xl animate-slide-up text-center md:text-left">
+        <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-8 bg-[#091515]/60 backdrop-blur-2xl p-6 md:p-10 rounded-[2.5rem] border border-white/10 shadow-2xl animate-slide-up text-center md:text-left">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
             <div className="h-16 w-16 md:h-20 md:w-20 bg-primary p-4 md:p-5 text-primary-foreground flex items-center justify-center rounded-2xl md:rounded-[1.5rem] shadow-[0_0_30px_rgba(174,234,0,0.3)] animate-float">
               <ShoppingBag size={32} />
             </div>
             <div className="flex flex-col items-center md:items-start space-y-2">
-              <h1 className="text-3xl md:text-5xl font-black tracking-tight font-display text-brand-gradient leading-none">{store?.name}</h1>
-              <p className="text-white/60 font-bold text-base md:text-xl italic leading-tight">
-                {store?.tagline || "Your personalized boutique experience"}
-              </p>
+              <h1 className="text-2xl md:text-5xl font-black tracking-tight font-display text-brand-gradient leading-none break-words max-w-full">{store?.name}</h1>
+              {store?.tagline && (
+                <p className="text-white/60 font-bold text-base md:text-xl italic leading-tight line-clamp-2">
+                  {store.tagline}
+                </p>
+              )}
               <div 
                 onClick={copyStoreLink}
-                className="inline-flex items-center gap-2 mt-4 bg-white/5 border border-white/10 rounded-full px-5 py-2 group cursor-pointer hover:bg-white/10 hover:border-primary/30 transition-all shadow-inner"
+                className="inline-flex items-center gap-2 mt-4 bg-white/5 border border-white/10 rounded-full px-4 py-2 group cursor-pointer hover:bg-white/10 hover:border-primary/30 transition-all shadow-inner max-w-[calc(100vw-5rem)] sm:max-w-full"
               >
-                 <LinkIcon size={14} className="text-primary group-hover:scale-110 transition-transform" />
-                 <span className="text-[11px] font-black uppercase tracking-widest text-white/40 group-hover:text-white/60 transition-colors">
+                 <LinkIcon size={14} className="text-primary group-hover:scale-110 transition-transform shrink-0" />
+                 <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-white/40 group-hover:text-white/60 transition-colors truncate min-w-0">
                    {hostname}/store/{store?.slug}
                  </span>
-                 <Copy size={12} className="text-white/20 group-hover:text-primary transition-all ml-1" />
+                 <Copy size={12} className="text-white/20 group-hover:text-primary transition-all ml-1 shrink-0" />
               </div>
             </div>
           </div>
@@ -566,7 +568,7 @@ export default function DashboardPage() {
                       <>
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="font-bold text-white text-lg">{(item as any).name}</h3>
+                            <h3 className="font-bold text-white text-lg truncate max-w-[200px]">{(item as any).name}</h3>
                             <p className="text-primary font-black">KES {(item as any).price.toLocaleString()}</p>
                           </div>
                           <Badge variant="outline" className="rounded-lg bg-primary/10 text-primary border-primary/20 font-bold">Active</Badge>
@@ -761,7 +763,7 @@ export default function DashboardPage() {
                       <>
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="font-bold text-white text-lg">{(item as any).name}</h3>
+                            <h3 className="font-bold text-white text-lg truncate max-w-[200px]">{(item as any).name}</h3>
                             <p className="text-primary font-black">KES {(item as any).price.toLocaleString()}</p>
                           </div>
                           <Badge variant="outline" className="rounded-lg bg-primary/10 text-primary border-primary/20 font-bold">Active</Badge>
