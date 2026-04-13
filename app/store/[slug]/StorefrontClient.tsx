@@ -204,6 +204,27 @@ export default function StorefrontClient({ store, products }: { store: any, prod
             </div>
           ))}
         </div>
+
+        {filteredProducts.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-32 text-center animate-pop-in">
+            <div className="h-24 w-24 bg-white/5 rounded-[2.5rem] flex items-center justify-center mb-6 border border-white/5 shadow-inner">
+              <ShoppingBag size={40} className="text-white/10" />
+            </div>
+            <h3 className="text-2xl font-black text-white mb-2 tracking-tight">No Items Found</h3>
+            <p className="text-white/40 font-bold max-w-xs mx-auto text-sm leading-relaxed">
+              {search ? `We couldn't find any products matching "${search}".` : "This store hasn't added any products to their catalog yet."}
+            </p>
+            {search && (
+              <Button 
+                variant="ghost" 
+                onClick={() => setSearch("")}
+                className="mt-6 text-primary hover:text-primary/80 hover:bg-primary/10 font-black uppercase text-[10px] tracking-widest h-10 px-6 rounded-xl"
+              >
+                Clear Search
+              </Button>
+            )}
+          </div>
+        )}
       </main>
 
       {/* Checkout Dialog */}
