@@ -17,6 +17,16 @@ export default function OnboardingPage() {
     mpesaNumber: "",
   });
   const [hostname, setHostname] = useState("sokosnap.com");
+  const [slugCustomized, setSlugCustomized] = useState(false);
+
+  const slugify = (text: string) => {
+    return text
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -79,7 +89,14 @@ export default function OnboardingPage() {
                     placeholder="My Awesome Shop"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) => {
+                      const name = e.target.value;
+                      setFormData(prev => ({
+                        ...prev,
+                        name,
+                        slug: slugCustomized ? prev.slug : slugify(name)
+                      }));
+                    }}
                     className="bg-white/5 border-white/10 text-white placeholder:text-white/30 h-14 focus-visible:ring-primary rounded-2xl px-6 text-lg font-bold"
                   />
                 </div>
@@ -96,7 +113,10 @@ export default function OnboardingPage() {
                         placeholder="my-shop"
                         required
                         value={formData.slug}
-                        onChange={(e) => setFormData({ ...formData, slug: e.target.value.toLowerCase().replace(/\s+/g, '-') })}
+                        onChange={(e) => {
+                          setSlugCustomized(true);
+                          setFormData({ ...formData, slug: e.target.value.toLowerCase().replace(/\s+/g, '-') });
+                        }}
                         className="bg-transparent border-none text-white placeholder:text-white/10 h-10 pl-1 focus-visible:ring-0 focus-visible:outline-none font-black text-lg flex-1 min-w-0"
                       />
                     </div>
