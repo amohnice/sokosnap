@@ -125,15 +125,15 @@ export default function StorefrontClient({ store, products }: { store: any, prod
     <div className="flex flex-col min-h-screen font-sans selection:bg-primary/20">
       {/* Header */}
       <header className="sticky top-0 z-30 w-full bg-[#091515]/90 backdrop-blur-2xl border-b border-white/5 px-6 py-4">
-        <div className="container mx-auto flex items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
+        <div className="container mx-auto flex items-center justify-between gap-3 sm:gap-6">
+          <div className="flex items-center gap-2 sm:gap-4">
             <div className="h-12 w-12 bg-primary text-primary-foreground flex items-center justify-center rounded-2xl shadow-[0_0_25px_rgba(174,234,0,0.25)] animate-float shrink-0">
               <ShoppingBag size={22} />
             </div>
             <div className="min-w-0 flex flex-col">
-              <h1 className="text-xl font-black tracking-tight text-white line-clamp-1 font-display leading-tight">{store.name}</h1>
+              <h1 className="text-xl font-black tracking-tight text-white font-display leading-tight break-words">{store.name}</h1>
               {store.tagline && (
-                <p className="text-[10px] font-bold italic text-white/40 line-clamp-1 leading-tight mt-0.5">
+                <p className="text-[10px] font-bold italic text-white/40 leading-tight mt-0.5 break-words">
                   {store.tagline}
                 </p>
               )}
@@ -445,12 +445,12 @@ export default function StorefrontClient({ store, products }: { store: any, prod
           <div className="flex flex-col items-center md:items-start space-y-2">
             <div className="flex items-center gap-2">
               <ShoppingBag size={20} className="text-primary" />
-              <span className="font-heading text-lg font-black italic tracking-tighter text-white">
+              <span className="font-heading text-lg font-black italic tracking-tighter text-white break-words">
                 {store.name}
               </span>
             </div>
             {store.tagline && (
-              <p className="text-xs font-medium text-white/40 italic">
+              <p className="text-xs font-medium text-white/40 italic break-words">
                 {store.tagline}
               </p>
             )}
