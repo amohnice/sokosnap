@@ -56,7 +56,7 @@ export default function OnboardingPage() {
             <ShoppingBag size={28} />
           </div>
           <div className="space-y-2">
-            <h1 className="text-4xl font-black text-white tracking-tight text-brand-gradient">
+            <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight text-brand-gradient">
               Setup your store
             </h1>
             <p className="text-white/60 font-medium max-w-[280px]">
@@ -70,7 +70,7 @@ export default function OnboardingPage() {
           <div className="absolute -inset-1 bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 rounded-[3.2rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000" />
           
           <Card className="rounded-[3rem] border border-white/20 bg-[#091515]/80 backdrop-blur-2xl shadow-3xl overflow-hidden p-1">
-            <div className="bg-white/5 p-10 rounded-[2.75rem] space-y-8 border border-white/5 shadow-inner-soft">
+            <div className="bg-white/5 p-6 sm:p-10 rounded-[2.75rem] space-y-8 border border-white/5 shadow-inner-soft">
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-white/70 font-semibold mb-1 block px-1">Store Name</Label>
@@ -87,9 +87,9 @@ export default function OnboardingPage() {
                 <div className="space-y-2">
                   <Label htmlFor="slug" className="text-white/70 font-semibold mb-1 block px-1 text-xs uppercase tracking-widest">Store Slug (URL Link)</Label>
                   <div className="relative flex items-center group/slug">
-                    <div className="flex bg-white/5 border border-white/10 rounded-2xl h-14 items-center px-4 group focus-within:border-primary/50 transition-all w-full">
-                      <span className="text-white/30 font-bold text-sm select-none">
-                        {hostname}/store/
+                    <div className="flex bg-white/5 border border-white/10 rounded-2xl h-14 items-center px-4 group focus-within:border-primary/50 transition-all w-full overflow-hidden">
+                      <span className="text-white/30 font-bold text-xs sm:text-sm select-none shrink-0">
+                        <span className="hidden sm:inline">{hostname}</span>/store/
                       </span>
                       <Input 
                         id="slug"
@@ -97,7 +97,7 @@ export default function OnboardingPage() {
                         required
                         value={formData.slug}
                         onChange={(e) => setFormData({ ...formData, slug: e.target.value.toLowerCase().replace(/\s+/g, '-') })}
-                        className="bg-transparent border-none text-white placeholder:text-white/10 h-10 pl-2 focus-visible:ring-0 focus-visible:outline-none font-black text-lg w-full flex-1"
+                        className="bg-transparent border-none text-white placeholder:text-white/10 h-10 pl-1 focus-visible:ring-0 focus-visible:outline-none font-black text-lg flex-1 min-w-0"
                       />
                     </div>
                   </div>
